@@ -790,7 +790,16 @@ h3.sub {
   max-height: 340px;
 }
 
+/* four portrait build photos — a 2x2 on phones and tablets, one row of
+   four once the panel is wide enough (see the 768px breakpoint) */
+#panel-synchro .figs {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin: 0.75rem 0 0.4rem;
 }
 
@@ -809,6 +818,16 @@ h3.sub {
 
 .btn:hover {
   background: #0a5a5a;
+}
+
+/* a second, quieter link beside the main one */
+.btn-alt {
+  color: var(--accent);
+  background: var(--surface);
+}
+
+.btn-alt:hover {
+  background: var(--accent-tint);
 }
 
 .wp-wrap {
@@ -867,6 +886,41 @@ h3.sub {
   .proj-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start; /* cards keep their natural height */
+  }
+
+  /* Synchro spans the row: its vertical clip on the left, the title and
+     text beside it, so the clip never towers over a half-width card */
+  .proj-wide {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "media title"
+      "media text";
+    column-gap: 1.1rem;
+  }
+
+  .proj-wide > .proj-title {
+    grid-area: title;
+  }
+
+  .proj-wide > .mi {
+    grid-area: media;
+  }
+
+  .proj-wide > .proj-text {
+    grid-area: text;
+  }
+
+  /* the column sets the clip's width here, not the height cap */
+  .proj-wide .v-cap {
+    width: 100%;
+    height: auto;
+  }
+
+  #panel-synchro .figs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .designs {
@@ -934,7 +988,7 @@ h3.sub {
     white-space: nowrap;
   }
 
-  /* one exception: the two pills are controls and need a visible label,
+  /* one exception: the project pills are controls and need a visible label,
      and this heading is also the original's collapse target */
   #projects-h {
     position: static;

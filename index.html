@@ -70,7 +70,7 @@
                 <span class="rail-num" aria-hidden="true">03</span>
                 <span class="rail-body">
                   <span class="rail-label">Other Projects</span>
-                  <span class="rail-meta">2 projects</span>
+                  <span class="rail-meta">3 projects</span>
                 </span>
               </a>
             </li>
@@ -334,6 +334,15 @@
               <button
                 class="tab"
                 type="button"
+                data-id="synchro"
+                aria-expanded="false"
+                aria-controls="panel-synchro"
+              >
+                Synchro
+              </button>
+              <button
+                class="tab"
+                type="button"
                 data-id="satya"
                 aria-expanded="false"
                 aria-controls="panel-satya"
@@ -354,6 +363,41 @@
           </div>
 
           <div class="proj-grid" id="proj-grid">
+            <!-- C0 Synchro card — spans the row, its clip beside the text -->
+            <article class="card proj proj-wide" data-id="synchro">
+              <h3 class="proj-title">
+                <button class="proj-open" type="button" data-id="synchro">Synchro</button>
+              </h3>
+              <div class="mi">
+                <div class="mw v v-cap">
+                  <video
+                    controls
+                    muted
+                    playsinline
+                    preload="none"
+                    data-src="assets/videos/synchro-control.webm"
+                    data-poster="assets/videos/synchro-control.webp"
+                  ></video>
+                </div>
+              </div>
+              <div class="proj-text">
+                <p>
+                  A <b>wearable glove</b> that turns hand motion into computer
+                  control, with a finger-mounted camera and an AI voice assistant
+                  that can <b>see what you point it at</b>.
+                </p>
+                <p>
+                  Tilt your hand to move the pointer, touch copper finger contacts
+                  to <b>click, drag, and scroll</b>, and ask <b>Jarvis</b> about
+                  whatever the camera sees.
+                </p>
+                <p>
+                  I placed <b>runner-up in the Hardware Track</b> at
+                  <b>SBUHacks 2026</b> with teammates Justin Lee and Jayden Lam.
+                </p>
+              </div>
+            </article>
+
             <!-- C1 Satya card -->
             <article class="card proj" data-id="satya">
               <h3 class="proj-title">
@@ -418,6 +462,163 @@
 
           <!-- Detail panels -->
           <div class="panels">
+            <!-- Synchro detail -->
+            <article class="card panel" id="panel-synchro" data-id="synchro" hidden>
+              <div class="panel-head">
+                <h3>Synchro</h3>
+                <button class="panel-close" type="button" data-id="synchro">Close</button>
+              </div>
+
+              <div class="pair pair-sm">
+                <div class="mi">
+                  <div class="mw v">
+                    <video
+                      controls
+                      muted
+                      playsinline
+                      preload="none"
+                      data-src="assets/videos/synchro-control.webm"
+                      data-poster="assets/videos/synchro-control.webp"
+                    ></video>
+                  </div>
+                  <p class="cap">Pointer control + camera search</p>
+                </div>
+                <div class="mi">
+                  <div class="mw v">
+                    <video
+                      controls
+                      muted
+                      playsinline
+                      preload="none"
+                      data-src="assets/videos/synchro-jarvis.webm"
+                      data-poster="assets/videos/synchro-jarvis.webp"
+                    ></video>
+                  </div>
+                  <p class="cap">Talking to Jarvis</p>
+                </div>
+              </div>
+              <p class="cap cap-c note">*Unmute the videos for sound</p>
+
+              <div class="figs">
+                <figure class="fig">
+                  <img
+                    class="portrait"
+                    src="assets/images/synchro-image1.webp"
+                    alt="The Synchro glove laid flat, with its battery, motion sensor, and boards on the back of the hand"
+                    width="768"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="cap">Glove layout</figcaption>
+                </figure>
+                <figure class="fig">
+                  <img
+                    class="portrait"
+                    src="assets/images/synchro-image2.webp"
+                    alt="Close-up of the Arduino Nano ESP32, MPU-6050, and PowerBoost wiring"
+                    width="768"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="cap">Arduino Nano ESP32 &amp; MPU-6050</figcaption>
+                </figure>
+                <figure class="fig">
+                  <img
+                    class="portrait"
+                    src="assets/images/synchro-image3.webp"
+                    alt="Palm side of the glove with the ESP32-CAM on a finger and copper contacts on the fingertips"
+                    width="768"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="cap">ESP32-CAM &amp; finger contacts</figcaption>
+                </figure>
+                <figure class="fig">
+                  <img
+                    class="portrait"
+                    src="assets/images/synchro-image4.webp"
+                    alt="Side view of the worn glove showing the fingertip contacts and wiring"
+                    width="768"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="cap">Contacts for click, drag &amp; scroll</figcaption>
+                </figure>
+              </div>
+
+              <p>
+                Synchro is a <b>wearable glove</b> and Windows app that combine
+                motion control, a Bluetooth camera, speech recognition, and AI into
+                one way of using a computer. It was inspired by a friend's wrist
+                pain from carpal tunnel syndrome and by people with low vision who
+                have trouble reading printed text.
+              </p>
+              <p>
+                Hand tilt is turned into <b>pointer movement</b> using
+                quaternion-based orientation and a calibrated neutral pose.
+                Touching the thumb to the index or middle finger left- or
+                right-clicks, holding a contact drags, and holding both while
+                tilting scrolls.
+              </p>
+              <p>
+                After the wake word "Jarvis," a spoken question and a fresh camera
+                frame go to <b>Google Gemini</b>, which can answer out loud, type
+                text, or run keyboard shortcuts.
+              </p>
+              <p>
+                I placed <b>runner-up in the Hardware Track</b> at
+                <b>SBUHacks 2026</b> with teammates Justin Lee and Jayden Lam.
+              </p>
+
+              <dl class="spec">
+                <div class="spec-row">
+                  <dt>Motion</dt>
+                  <dd>MPU-6050 on an Arduino Nano ESP32 (USB or BLE)</dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Clicks</dt>
+                  <dd>Copper finger contacts for click, drag, and scroll</dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Camera</dt>
+                  <dd>ESP32-CAM sending JPEGs over Bluetooth Classic</dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Speech</dt>
+                  <dd>Local transcription with NVIDIA Parakeet + Silero VAD</dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Assistant</dt>
+                  <dd>Jarvis, powered by Google Gemini</dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Power</dt>
+                  <dd>LiPo battery + Adafruit PowerBoost 1000C</dd>
+                </div>
+              </dl>
+
+              <p class="cta-row">
+                <a
+                  class="btn"
+                  href="https://devpost.com/software/synchro-0z4k1t"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View on Devpost</a
+                >
+                <a
+                  class="btn btn-alt"
+                  href="https://github.com/jaydenstab/Synchro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub Repo</a
+                >
+              </p>
+            </article>
+
             <!-- Satya detail -->
             <article class="card panel" id="panel-satya" data-id="satya" hidden>
               <div class="panel-head">
